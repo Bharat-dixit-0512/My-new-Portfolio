@@ -16,20 +16,20 @@
 
 ## ✨ Features
 
-| Feature | Description |
-|---|---|
-| **3D Space Background** | Floating wireframe shapes, starfield particles, and a rotating globe powered by React Three Fiber |
-| **Scroll-Driven Camera** | Camera moves through depth layers as you scroll, creating an immersive space travel effect |
-| **Mouse Parallax** | 3D objects and camera react to mouse movement in real time |
-| **Glassmorphism UI** | Frosted glass cards with subtle borders and backdrop blur throughout |
-| **3D Tilt Cards** | Project cards rotate on hover based on cursor position using CSS perspective transforms |
-| **Typing Animation** | Hero subtitle cycles through roles with a typewriter effect |
-| **Animated Skill Bars** | Progress bars animate into view with scroll-triggered transitions |
-| **Cursor Glow Trail** | Custom neon glow that follows your cursor with smooth interpolation |
-| **Scroll Progress Bar** | Gradient indicator at the top showing page scroll position |
-| **Scroll-Spy Navbar** | Active section auto-highlights as you scroll through the page |
-| **Lazy Loading** | Heavy sections loaded on demand for faster initial page load |
-| **Fully Responsive** | Optimized layout for desktop, tablet, and mobile viewports |
+| Feature                  | Description                                                                                       |
+| ------------------------ | ------------------------------------------------------------------------------------------------- |
+| **3D Space Background**  | Floating wireframe shapes, starfield particles, and a rotating globe powered by React Three Fiber |
+| **Scroll-Driven Camera** | Camera moves through depth layers as you scroll, creating an immersive space travel effect        |
+| **Mouse Parallax**       | 3D objects and camera react to mouse movement in real time                                        |
+| **Glassmorphism UI**     | Frosted glass cards with subtle borders and backdrop blur throughout                              |
+| **3D Tilt Cards**        | Project cards rotate on hover based on cursor position using CSS perspective transforms           |
+| **Typing Animation**     | Hero subtitle cycles through roles with a typewriter effect                                       |
+| **Animated Skill Bars**  | Progress bars animate into view with scroll-triggered transitions                                 |
+| **Cursor Glow Trail**    | Custom neon glow that follows your cursor with smooth interpolation                               |
+| **Scroll Progress Bar**  | Gradient indicator at the top showing page scroll position                                        |
+| **Scroll-Spy Navbar**    | Active section auto-highlights as you scroll through the page                                     |
+| **Lazy Loading**         | Heavy sections loaded on demand for faster initial page load                                      |
+| **Fully Responsive**     | Optimized layout for desktop, tablet, and mobile viewports                                        |
 
 ---
 
@@ -81,7 +81,7 @@ src/
 
 ```bash
 # Clone the repository
-git clone https://github.com/Bharat-dixit-0512/My-Portfolio.git
+git clone https://github.com/Bharat-dixit-0512/My-new-Portfolio.git
 cd My-Portfolio
 
 # Install dependencies
@@ -131,6 +131,6 @@ npm run preview
 
 **Built with ❤️ by Bharat Dixit**
 
-*React · Three.js · Framer Motion · Tailwind CSS*
+_React · Three.js · Framer Motion · Tailwind CSS_
 
 </div>
