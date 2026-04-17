@@ -102,7 +102,8 @@ export const projects = [
     image: '/City-Buddy.png',
     tags: ['React', 'Node.js', 'Maps API'],
     codeLink: 'https://github.com/Bharat-dixit-0512/City-Buddy',
-    liveLink: 'https://github.com/Bharat-dixit-0512/City-Buddy',
+    liveLink: 'https://city-buddy.vercel.app/',
+    
   },
   {
     id: 2,
