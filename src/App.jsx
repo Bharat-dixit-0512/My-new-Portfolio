@@ -1,43 +1,47 @@
-import React from "react"
-import { createBrowserRouter, RouterProvider } from "react-router-dom"
-import Home from "./components/Home"
-import About from "./components/About"
-import Contact from "./components/Contact"
-import Projects from "./components/Projects"
-import Navbar from './components/Navbar.jsx'
-import Certificate from "./components/Certificate.jsx"
+import React, { Suspense, lazy } from 'react';
+import Navbar from './components/Navbar';
+import Hero from './components/Hero';
+import CursorGlow from './components/CursorGlow';
+import ScrollProgress from './components/ScrollProgress';
+import SpaceScene from './scenes/SpaceScene';
 
-function App() {
-  const router=createBrowserRouter([
-    {
-      path:"/",
-      element:<><Navbar/><Home/></>
-    },
-    {
-      path:'/About',
-      element:<><Navbar/><About/></>
-    },
-    {
-      path:'/Contact',
-      element:<><Navbar/><Contact/></>
-    },
-    {
-      path:'/Projects',
-      element:<><Navbar/><Projects/></>
-    },
-    {
-      path:'/Certificate',
-      element:<><Navbar/><Certificate/></>
-    },
-   
-  ])
+const About = lazy(() => import('./components/About'));
+const Projects = lazy(() => import('./components/Projects'));
+const Skills = lazy(() => import('./components/Skills'));
+const Contact = lazy(() => import('./components/Contact'));
 
+function LoadingFallback() {
   return (
-    <>
-      <RouterProvider router={router}/>
-    </>
-  )
-  
+    <div className="section-loading">
+      <div className="loading-spinner" />
+    </div>
+  );
 }
 
-export default App
+function App() {
+  return (
+    <>
+      <SpaceScene />
+      <CursorGlow />
+      <ScrollProgress />
+      <Navbar />
+      <main className="main-content">
+        <Hero />
+        <Suspense fallback={<LoadingFallback />}>
+          <About />
+        </Suspense>
+        <Suspense fallback={<LoadingFallback />}>
+          <Projects />
+        </Suspense>
+        <Suspense fallback={<LoadingFallback />}>
+          <Skills />
+        </Suspense>
+        <Suspense fallback={<LoadingFallback />}>
+          <Contact />
+        </Suspense>
+      </main>
+    </>
+  );
+}
+
+export default App;

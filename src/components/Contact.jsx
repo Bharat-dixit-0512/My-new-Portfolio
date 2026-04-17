@@ -1,66 +1,188 @@
-import React from 'react';
-import { FaPhone, FaGithub } from 'react-icons/fa6';
-import { MdLocationPin, MdEmail } from 'react-icons/md';
-import { SiLinkedin, SiInstagram } from "react-icons/si";
-const Contact = () => {
-    return (
+import React, { useRef, useState } from 'react';
+import { motion, useInView } from 'framer-motion';
+import { personalInfo, socialLinks } from '../data/portfolioData';
+import { FaGithub, FaLinkedin, FaTwitter, FaInstagram, FaPhone } from 'react-icons/fa';
+import { SiLeetcode } from 'react-icons/si';
+import { MdEmail, MdLocationPin } from 'react-icons/md';
 
-        <div className="fade-in min-h-screen  bg-gradient-to-b from-gray-900 via-black to-gray-900 text-white flex flex-col items-center justify-center px-6">
-            <div className="text-center mb-12 mt-40">
-                <h1 className="text-6xl md:text-7xl font-extrabold font-serif z-100 drop-shadow-[0_0_8px_rgba(255,0,60,0.8)] bg-gradient-to-r from-white via-red-400 to-red-600 bg-clip-text text-transparent mb-4 leading-tight hover:scale-105 transition-transform duration-300">
-                    CONTACT ME
-                </h1>
-                <h2 className="text-2xl font-semibold mb-2">
-                    Ideas to merge or insights to commit ?
-
-                </h2>
-                <h3 className="text-lg text-gray-400 max-w-xl mx-auto">
-                    Let’s start the conversation - drop a hello and let’s push forward.
-                </h3>
-            </div>
-
-            <div className="flex flex-col md:flex-row justify-center items-center gap-40">
-
-                <div className="flex flex-col items-center text-center">
-                    <MdLocationPin size={60} className="mb-3 text-white" />
-                    <h4 className="bg-gradient-to-r from-white via-red-400 to-red-600 bg-clip-text text-transparent font-bold uppercase text-sm mb-1 tracking-wide">
-                        Find Me @
-                    </h4>
-                    <a href='https://www.google.com/maps/place/Vrindavan,+Uttar+Pradesh/@27.5648154,77.6593709,13z/data=!3m1!4b1!4m6!3m5!1s0x39736fcb5e9a2309:0x9868374c5faaf3ce!8m2!3d27.5650088!4d77.6593394!16zL20vMDRmeXFm?entry=ttu&g_ep=EgoyMDI1MDgyNS4wIKXMDSoASAFQAw%3D%3D' target='_blank' className="text-sm cursor-pointer ">Vrindavan</a>
-                </div>
-
-                <div className="flex flex-col items-center text-center">
-                    <MdEmail size={60} className="mb-3 text-white" />
-                    <h4 className="bg-gradient-to-r from-white via-red-400 to-red-600 bg-clip-text text-transparent font-bold uppercase text-sm mb-1 tracking-wide">
-                        Email Me @
-                    </h4>
-                    <a href="mailto:dixitbt0512@gmail.com" target="_blank" alt="Mail Id" className="text-sm">
-                        dixitbt0512@gmail.com
-                    </a>
-                </div>
-
-
-                <div className="flex flex-col items-center text-center">
-                    <FaPhone size={50} className="mb-3 text-white" />
-                    <h4 className="bg-gradient-to-r from-white via-red-400 to-red-600 bg-clip-text text-transparent font-bold uppercase text-sm mb-1 tracking-wide">
-                        Call Me @
-                    </h4>
-                    <a href='tel:+919412659692' alt='Mobile No.' className="text-sm">Mobile:+91 941-265-9692</a>
-                </div>
-            </div>
-
-            <div className='flex flex-col mt-10 tracking-wider justify-center'>
-                <p>&copy; Bharat 2025 | Created By <span className=' text-red-500 z-100 drop-shadow-[0_0_8px_rgba(255,0,60,0.8)] animate-pulse font-bold font-Exo text-xl'>BharatDixit🤍</span></p>
-            </div>
-
-            <div className='flex justify-center items-center gap-10 mt-6'>
-                <a className='hover:text-red-400' target='_blank' alt='GitHub' href="https://github.com/Bharat-dixit-0512"><FaGithub size={25} /></a>
-                <a className='hover:text-red-400' target='_blank' alt='Linkedin' href="https://www.linkedin.com/in/bharat-dixit-/"><SiLinkedin size={22} /></a>
-                <a className='hover:text-red-400' target='_blank' alt='Instagram' href="https://www.instagram.com/__bharatdixit.0512/?next=https%3A%2F%2Fwww.instagram.com%2Fdirect%2Fnew%2F%3Fnext%3D%252Fdirect%252Finbox%252F%26__coig_login%3D1"><SiInstagram size={22} /></a>
-            </div>
-
-        </div>
-    );
+const iconMap = {
+  github: FaGithub,
+  linkedin: FaLinkedin,
+  twitter: FaTwitter,
+  instagram: FaInstagram,
+  leetcode: SiLeetcode,
 };
 
-export default Contact;
+export default function Contact() {
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { once: true, margin: '-100px' });
+  const [formState, setFormState] = useState({ name: '', email: '', message: '' });
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await fetch(personalInfo.formspreeEndpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formState),
+      });
+      setSubmitted(true);
+      setFormState({ name: '', email: '', message: '' });
+      setTimeout(() => setSubmitted(false), 4000);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const contactCards = [
+    {
+      icon: <MdLocationPin size={28} />,
+      label: 'Location',
+      value: personalInfo.location,
+      href: personalInfo.locationUrl,
+    },
+    {
+      icon: <MdEmail size={28} />,
+      label: 'Email',
+      value: personalInfo.email,
+      href: `mailto:${personalInfo.email}`,
+    },
+    {
+      icon: <FaPhone size={24} />,
+      label: 'Phone',
+      value: personalInfo.phone,
+      href: `tel:${personalInfo.phoneRaw}`,
+    },
+  ];
+
+  return (
+    <section id="contact" className="section contact-section" ref={sectionRef}>
+      <div className="section-container">
+        <motion.h2
+          className="section-title"
+          initial={{ opacity: 0, y: -20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+        >
+          Get In <span className="text-gradient">Touch</span>
+        </motion.h2>
+        <motion.p
+          className="section-subtitle"
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ delay: 0.2 }}
+        >
+          Let's start the conversation — drop a hello and let's push forward.
+        </motion.p>
+
+        <div className="contact-grid">
+          {/* Contact Info Cards */}
+          <motion.div
+            className="contact-info"
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            {contactCards.map((card) => (
+              <a
+                key={card.label}
+                href={card.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="contact-card glass-card"
+              >
+                <div className="contact-card-icon">{card.icon}</div>
+                <div>
+                  <p className="contact-card-label">{card.label}</p>
+                  <p className="contact-card-value">{card.value}</p>
+                </div>
+              </a>
+            ))}
+
+            <div className="contact-socials">
+              {socialLinks.map((link) => {
+                const Icon = iconMap[link.icon];
+                return (
+                  <a
+                    key={link.label}
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="contact-social-icon"
+                    aria-label={link.label}
+                  >
+                    {Icon && <Icon size={22} />}
+                  </a>
+                );
+              })}
+            </div>
+          </motion.div>
+
+          {/* Contact Form */}
+          <motion.form
+            className="contact-form glass-card"
+            onSubmit={handleSubmit}
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="form-group">
+              <input
+                type="text"
+                name="name"
+                placeholder="Your Name"
+                required
+                value={formState.name}
+                onChange={(e) => setFormState({ ...formState, name: e.target.value })}
+                className="form-input"
+              />
+            </div>
+            <div className="form-group">
+              <input
+                type="email"
+                name="email"
+                placeholder="Your Email"
+                required
+                value={formState.email}
+                onChange={(e) => setFormState({ ...formState, email: e.target.value })}
+                className="form-input"
+              />
+            </div>
+            <div className="form-group">
+              <textarea
+                name="message"
+                rows="5"
+                placeholder="Your Message"
+                required
+                value={formState.message}
+                onChange={(e) => setFormState({ ...formState, message: e.target.value })}
+                className="form-input form-textarea"
+              />
+            </div>
+            <button type="submit" className="btn btn-primary btn-full" disabled={submitted}>
+              <span className="btn-glow" />
+              {submitted ? '✓ Message Sent!' : 'Send Message'}
+            </button>
+          </motion.form>
+        </div>
+
+        {/* Footer */}
+        <motion.footer
+          className="footer"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3 }}
+        >
+          <p>
+            © {new Date().getFullYear()} {personalInfo.name} | Built with{' '}
+            <span className="text-gradient">React + Three.js</span>
+          </p>
+        </motion.footer>
+      </div>
+    </section>
+  );
+}
