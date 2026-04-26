@@ -17,7 +17,7 @@ export const personalInfo = {
   phone: '+91 941-265-9692',
   phoneRaw: '+919412659692',
   resumeUrl: '/BharatResume.pdf',
-  profileImage: '/MeImage.png',
+  profileImage: '/me.jpeg',
   formspreeEndpoint: 'https://formspree.io/f/meozpnko',
 };
 
@@ -107,59 +107,104 @@ export const projects = [
   },
   {
     id: 2,
-    title: 'E-Commerce Store',
+    title: 'Portfolio Website v2',
     description:
-      'A sleek e-commerce UI with category filtering, search debounce, and responsive product display.',
-    image: '/E-commerce.png',
-    tags: ['React', 'Tailwind', 'API'],
-    codeLink: 'https://github.com/Bharat-dixit-0512/MY_E-Commerce',
-    liveLink: 'https://my-ecommerce-0512.netlify.app/',
+      'Modern portfolio showcasing projects, skills, and certifications with interactive animations, glowing cursor effects, and particle systems.',
+    image: '/NewPortfolio.png',
+    tags: ['React', 'Tailwind CSS', 'Framer Motion', 'Vite','Three js'],
+    codeLink: 'https://github.com/Bharat-dixit-0512/My-new-Portfolio',
+    liveLink: 'its-bharat-dixit.netlify.app',
   },
   {
     id: 3,
-    title: 'GitHub Fetcher',
+    title: 'Hostel Booking System',
     description:
-      'Fetch and display user profiles from GitHub using dynamic API calls with a clean UI.',
-    image: '/githubfetcher.png',
-    tags: ['HTML', 'CSS', 'JavaScript'],
-    codeLink: 'https://github.com/Bharat-dixit-0512/github_fetch',
-    liveLink: 'https://github-fetch-detail.netlify.app/',
+      'React-based hostel booking system with Tailwind styling and Framer Motion animations for seamless reservations.',
+    image: '/HostelBooking.png',
+    tags: ['React JS', 'Node.js', 'MongoDB', 'Socket.io'],
+    codeLink: 'https://github.com/Bharat-dixit-0512/Hostel-Booking-System',
+    liveLink: 'https://hostel-booking-system-omega.vercel.app/',
   },
   {
     id: 4,
-    title: 'Password Generator',
+    title: 'Chatify',
     description:
-      'A customizable password generator with strength indicators and copy-to-clipboard support.',
-    image: '/Password Generator.png',
-    tags: ['React', 'JavaScript'],
-    codeLink: 'https://github.com/Bharat-dixit-0512/MyPasswordGenerator',
-    liveLink: 'https://mypasswordgenerator1.netlify.app/',
+      'Real-time chat application using React, Tailwind, and Framer Motion, delivering smooth messaging and UI.',
+    image: '/Chatify.png',
+    tags: ['React JS', 'Node.js', 'Socket.io', 'MongoDB'],
+    codeLink: 'https://github.com/Bharat-dixit-0512/CHATIFY_APP',
+    liveLink: 'https://chatify-app-green.vercel.app/',
   },
-  {
-    id: 5,
-    title: 'iTask – Todo List',
-    description:
-      'A clean and intuitive task manager with add/delete functionality and persistent local storage.',
-    image: '/todolist.png',
-    tags: ['React', 'LocalStorage'],
-    codeLink: 'https://github.com/Bharat-dixit-0512/Todo-List-App',
-    liveLink: 'https://my-todo-itask.netlify.app/',
-  },
-  {
-    id: 6,
-    title: 'Portfolio v1',
-    description:
-      'Personal portfolio showcasing React skills, deployed projects, and design aesthetic.',
-    image: '/PortFolioSite.png',
-    tags: ['React', 'Tailwind', 'Framer Motion'],
-    codeLink: 'https://github.com/Bharat-dixit-0512/My-Portfolio',
-    liveLink: 'https://my-portfolioisme.netlify.app/',
-  },
+  
 ];
 
 export const certificates = [
   {
     id: 1,
+    title: 'Full Stack Web Development',
+    description: 'Completed Coding Blocks course at GLA University, Mathura.',
+    badge: 'Participation',
+    image: '/certificate.jpg',
+  },
+  {
+    id: 2,
+    title: 'Postman API Fundamentals Student Expert',
+    description: 'Official certification awarded by Postman.',
+    badge: 'Achievement',
+    image: '/postman.png',
+  },
+  {
+    id: 3,
+    title: 'Oracle Cloud AI Foundations Associate',
+    description:
+      'Certified in AI foundations on Oracle Cloud Infrastructure, 2025.',
+    badge: 'Certification',
+    image: '/oracle1.jpg',
+  },
+  {
+    id: 4,
+    title: 'GuideWire Certification',
+    description: 'Certified in GuideWire platform for insurance software solutions.',
+    badge: 'Certification',
+    image: '/GuideWire.png',
+  },
+  {
+    id: 5,
+    title: 'Java Basics',
+    description: 'Certified in Java fundamentals and core programming concepts.',
+    badge: 'Achievement',
+    image: '/java_basic.jpg',
+  },
+  {
+    id: 6,
+    title: 'JavaScript Fundamentals',
+    description: 'Completed JavaScript course covering ES6 and modern web development.',
+    badge: 'Achievement',
+    image: '/JavaScript.jpg',
+  },
+  {
+    id: 7,
+    title: 'Problem Solving Basics',
+    description: 'Certified in problem-solving techniques and algorithmic thinking.',
+    badge: 'Achievement',
+    image: '/problem_solving_basic.jpg',
+  },
+  {
+    id: 8,
+    title: 'React.js Mastery',
+    description: 'Advanced certification in React.js and modern component-based architecture.',
+    badge: 'Achievement',
+    image: '/React.png',
+  },
+  {
+    id: 9,
+    title: 'C# Fundamentals',
+    description: 'Certified in C# programming and .NET framework basics.',
+    badge: 'Achievement',
+    image: '/cSharp.png',
+  },
+  {
+    id: 10,
     title: 'Deloitte Virtual Experience Program',
     description:
       'Completed Deloitte tech simulation with coding task expertise.',
@@ -167,26 +212,28 @@ export const certificates = [
     image: '/deloite2.jpg',
   },
   {
-    id: 2,
-    title: 'Full Stack Web Development',
-    description: 'Completed Coding Blocks course at GLA University, Mathura.',
-    badge: 'Participation',
-    image: '/certificate.jpg',
-  },
-  {
-    id: 3,
-    title: 'Postman API Fundamentals Student Expert',
-    description: 'Official certification awarded by Postman.',
-    badge: 'Achievement',
-    image: '/postman.png',
-  },
-  {
-    id: 4,
-    title: 'Oracle Cloud AI Foundations Associate',
+    id: 11,
+    title: 'NPTEL Environmental Engineering',
     description:
-      'Certified in AI foundations on Oracle Cloud Infrastructure, 2025.',
+      'Completed 12-week NPTEL course on Introduction to Environmental Engineering and Science - Fundamental and Sustainability Concepts from IIT Kharagpur (Jan-Apr 2025).',
     badge: 'Certification',
-    image: '/oracle1.jpg',
+    image: '/Nptel.jpg',
+  },
+  {
+    id: 12,
+    title: 'Python Zero to Hero',
+    description:
+      'Successfully completed 5-days Free Bootcamp on Python Zero to Hero by DevTown in collaboration with MSIT, MSC Chapter (Jun 2025).',
+    badge: 'Participation',
+    image: '/PythonZeroToHero.jpg',
+  },
+  {
+    id: 13,
+    title: 'Annual Leadership Summit 2024',
+    description:
+      'Certificate of Coordination for coordinating the Annual Leadership Summit 2024 on "Leading The Future: The Power of Reskilling And Upskilling" at GLA University in association with NHRDN Mathura Chapter (Oct 2024).',
+    badge: 'Coordination',
+    image: '/LeaderShip.jpg',
   },
 ];
 

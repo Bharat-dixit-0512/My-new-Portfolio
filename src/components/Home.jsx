@@ -1,6 +1,7 @@
 import React from 'react';
-import InterestCards from './InterestCards';
 import { NavLink } from 'react-router-dom';
+import InterestCards from './InterestCards';
+import {personalInfo} from '../data/portfolioData.js';
 
 const Home = () => {
   return (
@@ -30,7 +31,7 @@ const Home = () => {
 
         <div className="neon-image-wrapper w-32 sm:w-40 md:w-52 lg:w-60 xl:w-64 h-32 sm:h-40 md:h-52 lg:h-60 xl:h-64 my-5">
           <img
-            src="/MeImage.png"
+            src={personalInfo.profileImage}
             alt="Bharat Dixit"
             className="w-full h-full object-cover object-top rounded-full"
           />
