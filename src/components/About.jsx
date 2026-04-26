@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { personalInfo, education, stats, socialLinks } from '../data/portfolioData';
-import { FaGithub, FaLinkedin, FaTwitter, FaInstagram } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaTwitter, FaInstagram, FaWhatsapp, FaDiscord } from 'react-icons/fa';
 import { SiLeetcode } from 'react-icons/si';
 
 const iconMap = {
@@ -10,6 +10,8 @@ const iconMap = {
   twitter: FaTwitter,
   instagram: FaInstagram,
   leetcode: SiLeetcode,
+  whatsapp: FaWhatsapp,
+  discord: FaDiscord,
 };
 
 function CountUp({ target, duration = 2000 }) {
@@ -41,6 +43,38 @@ function CountUp({ target, duration = 2000 }) {
 export default function About() {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, margin: '-100px' });
+  const [liveStats, setLiveStats] = React.useState({
+    githubRepos: null,
+    leetcodeSolved: null,
+  });
+
+  React.useEffect(() => {
+    // Extract GitHub username dynamically
+    const githubLink = socialLinks.find(link => link.icon === 'github')?.url;
+    const githubUsername = githubLink ? githubLink.split('/').pop() : 'Bharat-dixit-0512';
+
+    fetch(`https://api.github.com/users/${githubUsername}`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.public_repos !== undefined) {
+          setLiveStats((prev) => ({ ...prev, githubRepos: data.public_repos }));
+        }
+      })
+      .catch((err) => console.error('GitHub fetch error:', err));
+
+    // Extract LeetCode username dynamically
+    const leetcodeLink = socialLinks.find(link => link.icon === 'leetcode')?.url;
+    const leetcodeUsername = leetcodeLink ? leetcodeLink.split('/u/')[1]?.replace('/', '') : 'BharatDixit0512';
+
+    fetch(`https://leetcode-api-faisalshohag.vercel.app/${leetcodeUsername}`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.totalSolved !== undefined) {
+          setLiveStats((prev) => ({ ...prev, leetcodeSolved: data.totalSolved }));
+        }
+      })
+      .catch((err) => console.error('LeetCode fetch error:', err));
+  }, []);
 
   const containerVariants = {
     hidden: {},
@@ -82,11 +116,24 @@ export default function About() {
               <div className="stat-label">{stat.label}</div>
             </div>
           ))}
+          {/* Live Stats */}
+          <div className="stat-card glass-card">
+            <div className="stat-value" style={{ color: '#fbbf24' }}>
+              {liveStats.githubRepos ? <CountUp target={liveStats.githubRepos} /> : '...'}
+            </div>
+            <div className="stat-label">GitHub Repos</div>
+          </div>
+          <div className="stat-card glass-card">
+            <div className="stat-value" style={{ color: '#10b981' }}>
+              {liveStats.leetcodeSolved ? <CountUp target={liveStats.leetcodeSolved} /> : '...'}
+            </div>
+            <div className="stat-label">LeetCode Solved</div>
+          </div>
         </motion.div>
 
-        {/* Education */}
+        {/* Education Timeline */}
         <motion.div variants={itemVariants}>
-          <h3 className="subsection-title">Education</h3>
+          <h3 className="subsection-title">Journey Timeline</h3>
           <div className="education-timeline">
             {education.map((edu, i) => (
               <motion.div

@@ -121,6 +121,15 @@ body::-webkit-scrollbar-thumb {
 }
 .btn:hover .btn-glow { opacity: 1; }
 
+.floating-resume-btn {
+  position: fixed; bottom: 2rem; right: 2rem; z-index: 1000;
+  padding: 0.8rem 1.5rem; font-size: 1rem; border-radius: 30px;
+  box-shadow: 0 4px 20px rgba(0,245,255,0.3);
+}
+@media (max-width: 768px) {
+  .floating-resume-btn { bottom: 1rem; right: 1rem; padding: 0.6rem 1.2rem; font-size: 0.9rem; }
+}
+
 /* ===== Navbar ===== */
 .navbar-wrapper { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 0.75rem 1.5rem; }
 .navbar {
@@ -347,6 +356,22 @@ body::-webkit-scrollbar-thumb {
   box-shadow: 0 0 8px rgba(0,245,255,0.3);
 }
 
+.featured-skills-wrapper { padding: 2rem; margin-bottom: 3rem; text-align: center; }
+.featured-skills-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; }
+.featured-skill-item { display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+.circular-progress {
+  width: 90px; height: 90px; border-radius: 50%;
+  background: conic-gradient(var(--neon-cyan) var(--progress), rgba(255,255,255,0.05) 0deg);
+  display: flex; align-items: center; justify-content: center; position: relative;
+  box-shadow: 0 0 15px rgba(0,245,255,0.1);
+}
+.circular-progress::before {
+  content: ''; position: absolute; inset: 6px; border-radius: 50%;
+  background: var(--bg-card); backdrop-filter: blur(8px);
+}
+.inner-circle { position: relative; z-index: 1; font-weight: 700; color: #fff; font-family: var(--font-heading); }
+.featured-skill-name { font-size: 0.9rem; font-weight: 600; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px; }
+
 /* ===== Certificates ===== */
 .certificates-grid {
   display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -433,6 +458,45 @@ body::-webkit-scrollbar-thumb {
   color: var(--text-muted); border-top: 1px solid var(--border-glass);
   margin-top: 3rem;
 }
+
+/* ===== Extras ===== */
+.extras-section { padding-top: 4rem; }
+.extras-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem; margin-bottom: 4rem;
+}
+.extras-column { display: flex; flex-direction: column; gap: 1.5rem; }
+.text-left { text-align: left; }
+
+.hackathon-list, .article-list { display: flex; flex-direction: column; gap: 1.25rem; }
+.hackathon-card, .article-card { padding: 1.5rem; display: block; text-decoration: none; color: inherit; }
+.hackathon-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; }
+.hackathon-header h4, .article-card h4 { font-family: var(--font-heading); font-size: 1.1rem; color: #fff; margin-bottom: 0.5rem; }
+.hackathon-year { font-size: 0.8rem; color: var(--neon-cyan); }
+.hackathon-desc, .article-card p { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 0.75rem; }
+.hackathon-award {
+  display: inline-block; padding: 0.2rem 0.6rem; font-size: 0.7rem; border-radius: 6px;
+  background: rgba(168,85,247,0.1); color: var(--neon-purple); border: 1px solid rgba(168,85,247,0.2);
+}
+
+.article-meta { display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+.article-platform { color: var(--neon-pink); }
+.article-card:hover { transform: translateY(-3px); border-color: rgba(0,245,255,0.3); }
+
+.testimonials-wrapper { text-align: center; }
+.testimonials-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem; margin-top: 2rem;
+}
+.testimonial-card { padding: 2rem; position: relative; text-align: left; }
+.quote-icon {
+  position: absolute; top: 1rem; right: 1.5rem; font-size: 4rem;
+  font-family: var(--font-heading); color: rgba(0,245,255,0.1);
+  line-height: 1; pointer-events: none;
+}
+.testimonial-content { font-style: italic; color: var(--text-secondary); font-size: 0.9rem; line-height: 1.7; margin-bottom: 1.5rem; position: relative; z-index: 1; }
+.testimonial-author h4 { font-size: 1rem; color: #fff; }
+.testimonial-author span { font-size: 0.8rem; color: var(--neon-cyan); }
 
 /* ===== Loading ===== */
 .section-loading {

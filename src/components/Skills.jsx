@@ -73,7 +73,7 @@ export default function Skills() {
 }
 
 /* ---- Certificates sub-section ---- */
-import { certificates } from '../data/portfolioData';
+import { certificates, achievements } from '../data/portfolioData';
 
 function CertificatesSection() {
   const [activeImage, setActiveImage] = React.useState(null);
@@ -93,9 +93,9 @@ function CertificatesSection() {
       </motion.h3>
 
       <div className="certificates-grid">
-        {certificates.map((cert, i) => (
+        {[...achievements, ...certificates].map((cert, i) => (
           <motion.div
-            key={cert.id}
+            key={cert.title}
             className="certificate-card glass-card"
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}

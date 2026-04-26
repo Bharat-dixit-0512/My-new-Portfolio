@@ -47,13 +47,18 @@ export const socialLinks = [
     url: 'https://leetcode.com/u/BharatDixit0512/',
     icon: 'leetcode',
   },
+  {
+    label: 'WhatsApp',
+    url: 'https://wa.me/919412659692',
+    icon: 'whatsapp',
+  },
 ];
 
 export const stats = [
   { label: 'Projects Built', value: '10+', color: '#00f5ff' },
   { label: 'GitHub Commits', value: '400+', color: '#a855f7' },
   { label: 'Hours Coding/Day', value: '10+', color: '#3b82f6' },
-  { label: 'Certifications', value: '4+', color: '#f472b6' },
+  { label: 'Certifications', value: '13+', color: '#f472b6' },
 ];
 
 export const skills = [
@@ -241,7 +246,7 @@ export const education = [
   {
     degree: 'Bachelor of Technology in Computer Science',
     institution: 'GLA University',
-    year: '2023 – 2027',
+    year: '2023 – 2027 (Expected)',
   },
   {
     degree: 'Senior Secondary (Science)',
@@ -261,4 +266,21 @@ export const navItems = [
   { id: 'projects', label: 'Projects' },
   { id: 'skills', label: 'Skills' },
   { id: 'contact', label: 'Contact' },
+];
+
+export const achievements = [
+  {
+    id: 1,
+    title: 'Deloitte Virtual Experience Program',
+    description: 'Completed Deloitte tech simulation with coding task expertise.',
+    badge: 'Virtual Internship',
+    image: '/deloite2.jpg',
+  },
+  {
+    id: 2,
+    title: 'Annual Leadership Summit 2024',
+    description: 'Certificate of Coordination for coordinating the Annual Leadership Summit 2024 at GLA University.',
+    badge: 'Coordination',
+    image: '/LeaderShip.jpg',
+  }
 ];

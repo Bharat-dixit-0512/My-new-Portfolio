@@ -4,6 +4,7 @@ import Hero from './components/Hero';
 import CursorGlow from './components/CursorGlow';
 import ScrollProgress from './components/ScrollProgress';
 import SpaceScene from './scenes/SpaceScene';
+import { personalInfo } from './data/portfolioData';
 
 const About = lazy(() => import('./components/About'));
 const Projects = lazy(() => import('./components/Projects'));
@@ -25,6 +26,12 @@ function App() {
       <CursorGlow />
       <ScrollProgress />
       <Navbar />
+      
+      <a href={personalInfo.resumeUrl} download className="floating-resume-btn btn btn-primary">
+        <span className="btn-glow" />
+        Resume
+      </a>
+
       <main className="main-content">
         <Hero />
         <Suspense fallback={<LoadingFallback />}>

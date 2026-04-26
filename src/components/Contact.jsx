@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { personalInfo, socialLinks } from '../data/portfolioData';
-import { FaGithub, FaLinkedin, FaTwitter, FaInstagram, FaPhone } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaTwitter, FaInstagram, FaPhone, FaWhatsapp, FaDiscord } from 'react-icons/fa';
 import { SiLeetcode } from 'react-icons/si';
 import { MdEmail, MdLocationPin } from 'react-icons/md';
 
@@ -11,6 +11,8 @@ const iconMap = {
   twitter: FaTwitter,
   instagram: FaInstagram,
   leetcode: SiLeetcode,
+  whatsapp: FaWhatsapp,
+  discord: FaDiscord,
 };
 
 export default function Contact() {
@@ -118,6 +120,20 @@ export default function Contact() {
                 );
               })}
             </div>
+
+            {/* Map Embed */}
+            <div className="map-container glass-card" style={{ marginTop: '1.5rem', overflow: 'hidden', height: '220px', padding: 0 }}>
+              <iframe
+                title="Location Map"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d113175.76016259837!2d77.58572074335938!3d27.568436599999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39736fc1ab21db97%3A0xc4eb09d3b84db8e0!2sVrindavan%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                width="100%"
+                height="100%"
+                style={{ border: 0, filter: 'invert(90%) hue-rotate(180deg)' }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
           </motion.div>
 
           {/* Contact Form */}
@@ -166,6 +182,7 @@ export default function Contact() {
               <span className="btn-glow" />
               {submitted ? '✓ Message Sent!' : 'Send Message'}
             </button>
+
           </motion.form>
         </div>
 
